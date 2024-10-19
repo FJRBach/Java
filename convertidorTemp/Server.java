@@ -20,6 +20,11 @@ public class Server {
     }
 }
 
+/*
+* Se utiliza un handler para la construcción que inicializa socket
+* Utiliza el argumento de Socket para comunicar con el cliente, hacía el socket que está inicializado
+*/
+
 class ClientHandler implements Runnable {
     private Socket socket;
 
@@ -27,6 +32,10 @@ class ClientHandler implements Runnable {
         this.socket = socket;
     }
 
+    /* 
+    * Override indicará al compilador que run (de Runnable) sobrescribe a la interfaz
+    * Siendo el handler la implementación con Runnable, sobrescribiendo el método al otro
+    */
     @Override
     public void run() {
         try (DataInputStream dis = new DataInputStream(socket.getInputStream());
