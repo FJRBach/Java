@@ -1,4 +1,4 @@
-# Programa en Java de graficar en diferentes técnicas de decodificación #
+# *Grafja:* Programa en Java de graficar en diferentes técnicas de decodificación #
 ### Se utilizó Java 17 para su compilación, realizado en Netbeans IDE 8.2 ###
 ## Se gráfica una cadena de números al realizar la codificación y decodificación ##
 ### El sistema permite graficar en: ### 
