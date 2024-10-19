@@ -1,4 +1,4 @@
-# PROGRAMAS EN JAVA  #
+# PROGRAMAS EN JAVA JDK y JRE 17 #
 ## Se tiene el programa de RandomString:  ##
 ### Genera una cadena de texto aleatoria en base a la longitud enviada por el cliente a través del servidor ###
 ### El servidor responde al cliente la cadena aleatoria generada y se espera (Sleep) para cerrar la conexión y finalmente la ventana de comunicación ###
