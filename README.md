@@ -15,12 +15,12 @@ java -jar grafja.jar
 ```
 # *Arralista:* Programa en Java que permite agregar al final de la lista, al inicio, busccar elemento, modificar elemento, eliminar elemento, tomar valor del array (buscar por posición) y mostrar lista  #
 ## Se utiliza un bucle para guardar las tareas del usuario, eligiendo las posibilidades o funcionalidades anteriormente descritas. ##
-# Para ejecutar el .java (se puede recompilar con: 
+# Para iniciar con la compilación ya hecha y utilizar en el directorio del arralista: #
+```bash
+java Gestor.java
+```
+# En caso de ejecutarse y tener error, se puede recompilar con: # 
 ```bash
 javac Tarea.java Gestor.java
 ```
 #
-# O se puede iniciar con la compilación ya hecha y utilizar en el directorio del arralista: #
-```bash
-java Gestor.java
-```
