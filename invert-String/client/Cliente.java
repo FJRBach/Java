@@ -10,13 +10,25 @@ public class Cliente {
         try {
             Registry registry = LocateRegistry.getRegistry("localhost", 1099);
             GestorCadenaInterface gestor = (GestorCadenaInterface) registry.lookup("GestorCadena");
-
+            
             Scanner scanner = new Scanner(System.in);
-            System.out.print("Ingresa una cadena para invertir: ");
-            String cadena = scanner.nextLine();
+            String opcion;
 
-            String cadenaInvertida = gestor.invertirCadena(cadena);
-            System.out.println("Cadena invertida: " + cadenaInvertida);
+            do {
+                System.out.print("Ingresa una cadena para invertir (o 's' para salir): ");
+                String cadena = scanner.nextLine();
+
+                if (cadena.equalsIgnoreCase("s")) {
+                    opcion = "s";
+                } else {
+                    String cadenaInvertida = gestor.invertirCadena(cadena);
+                    System.out.println("Cadena invertida: " + cadenaInvertida);
+                    opcion = "c";
+                }
+                
+            } while (!opcion.equalsIgnoreCase("s"));
+
+            System.out.println("Cliente cerrado.");
         } catch (Exception e) {
             System.err.println("Error en el cliente: " + e.getMessage());
             e.printStackTrace();
