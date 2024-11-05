@@ -4,10 +4,13 @@ import shared.CalculadoraInterface;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 
-public class Calculadora extends UnicastRemoteObject implements CalculadoraInterface
+public class Calculadora extends UnicastRemoteObject 
+    implements CalculadoraInterface
  {
 
-    protected Calculadora() throws RemoteException {
+    protected Calculadora() 
+    throws RemoteException 
+    {
         super();
     }
 
@@ -29,7 +32,7 @@ public class Calculadora extends UnicastRemoteObject implements CalculadoraInter
     @Override
     public double dividir(double dividiendo, double divisor) throws RemoteException {
         if (divisor == 0) {
-            throw new RemoteException("No se puede dividir por cero");
+            throw new RemoteException("No se puede dividir un número nulo entre cero");
         }
         return dividiendo / divisor;
     }
