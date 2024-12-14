@@ -6,7 +6,9 @@ public class Saludador
     implements SaludadorInterface 
 {
     @Override
-    public String diHola(){
+    public String diHola()
+        throws java.rmi.RemoteException
+    {
         return "Hola";
     }
 }

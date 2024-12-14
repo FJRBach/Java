@@ -5,4 +5,7 @@ public interface SaludadorInterface
 {
     public String diHola()
         throws java.rmi.RemoteException;
+
+    public String diHola(String nombre)
+        throws java.rmi.RemoteException;
 }
