@@ -4,6 +4,7 @@ import java.util.*;
 
 public class GameManager {
     private final Map<Integer, QuestionTree> levels = new HashMap<>();
+    private final PrizeStack prizes = new PrizeStack();
     private final Scanner scanner = new Scanner(System.in);
 
     public GameManager() {
@@ -17,6 +18,8 @@ public class GameManager {
     }
 
     public void start() {
+        clearScreen(); // Limpia la pantalla al iniciar
+        prizes.clear(); // Limpia la pila de premios
         System.out.printf("\nIniciando nivel %d...\n", GameConfig.currentLevel);
         QuestionTree tree = levels.get(GameConfig.currentLevel);
         if (tree == null) {
@@ -28,7 +31,7 @@ public class GameManager {
         showResults(correct, total);
     }
 
-    // Recorre la lista enlazada y pide respuestas
+    // Recorre la lista enlazada, gestiona la pila y retorna aciertos (bonus)
     private int askQuestions(QuestionNode node) {
         int correct = 0;
         while (node != null) {
@@ -46,7 +49,17 @@ public class GameManager {
                 ans = -1;
             }
             if (ans == q.getCorrectOption()) {
-                correct++;
+                String prize = String.format("Premio L%d-P%d", GameConfig.currentLevel, q.getId());
+                prizes.award(prize);
+                System.out.println("¡Correcto! Has ganado un premio.");
+                correct++; // Puedes omitir si solo quieres pila
+            } else {
+                String revoked = prizes.revoke();
+                if (revoked != null) {
+                    System.out.printf("Incorrecto. Pierdes: %s\n", revoked);
+                } else {
+                    System.out.println("Incorrecto. No tenías premios para perder.");
+                }
             }
             node = node.getLeft();
         }
@@ -62,35 +75,33 @@ public class GameManager {
         return count;
     }
 
-    private void showResults(int correct, int total) {
+  private void showResults(int correct, int total) {
     System.out.println("\n--- Resultados ---");
     System.out.printf("Respuestas correctas: %d de %d\n", correct, total);
-    String calif = "";
-    if (total == 10) {
-        if (correct >= 7 && correct < 9) {
-            calif = "¡Has aprobado la asignatura!";
-        } else if (correct >= 9 && correct <= 10) {
-            calif = "¡Has aprobado y obtienes 5 puntos decimales extra para el siguiente tema!";
-        } else {
-            calif = "No has aprobado. Intenta otra vez.";
+    int premios = prizes.count();
+    if (premios > 0) {
+        System.out.printf("¡Felicidades! Obtuviste %d premio(s):\n", premios);
+        System.out.println("Nota: L = Level (Nivel), P = Pregunta. Ejemplo: Premio L2-P5 significa premio ganado en nivel 2, pregunta 5.");
+        for (String p : prizes.getAll()) {
+            System.out.println(" - " + p);
         }
-    } else if (total == 15) {
-        if (correct >= 11 && correct <= 13) {
-            calif = "¡Has aprobado la asignatura!";
-        } else if (correct >= 14 && correct <= 15) {
-            calif = "¡Has aprobado y obtienes 5 puntos decimales extra para el siguiente tema!";
-        } else {
-            calif = "No has aprobado. Intenta otra vez.";
-        }
-    } else if (total == 20) {
-        if (correct >= 15 && correct <= 17) {
-            calif = "¡Has aprobado la asignatura!";
-        } else if (correct >= 18 && correct <= 20) {
-            calif = "¡Has aprobado y obtienes 5 puntos decimales extra para el siguiente tema!";
-        } else {
-            calif = "No has aprobado. Intenta otra vez.";
-        }
+    } else {
+        System.out.println("No obtuviste premios esta vez. ¡Sigue practicando!");
     }
-    System.out.println(calif);
 }
+
+private void clearScreen() {
+    try {
+        if (System.getProperty("os.name").toLowerCase().contains("windows")) {
+            new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+        } else {
+            System.out.print("\033[H\033[2J");
+            System.out.flush();
+        }
+    } catch (Exception e) {
+        // Si no se puede limpiar, simplemente imprime varias líneas en blanco
+        for (int i = 0; i < 50; i++) System.out.println();
+    }
+}
+
 }
