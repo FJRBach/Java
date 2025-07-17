@@ -4,16 +4,37 @@ import java.util.*;
 
 public class QuestionLoaderNivel2 {
     public static List<Question> load() {
-        List<Question> questions = new ArrayList<>();
-        questions.add(new Question(4, "¿Cómo se llaman los animales que tienen un esqueleto articulado?",
-                Arrays.asList("Invertebrados", "Reptiles", "Vertebrados", "Artrópodos"),
-                3));
-        questions.add(new Question(5, "¿Cómo se llaman los animales que nacen de un huevo?",
-                Arrays.asList("Vivíparos", "Ovíparos", "Carnívoros", "Mamíferos"),
-                2));
-        questions.add(new Question(6, "¿Cuál es la sílaba tónica, la que pronunciamos con más intensidad o con menos?",
-                Arrays.asList("Con menos intensidad", "No tiene importancia", "La que pronunciamos con más intensidad", "Es muda"),
-                3));
+        List<Question> questions = new ArrayList<>(QuestionLoaderNivel1.load());
+        questions.add(new Question(11, "¿Cómo se llama un polígono de 5 lados?", Arrays.asList(
+                "Pentágono",
+                "Hexágono",
+                "Heptágono",
+                "Octágono"
+        ), 1));
+        questions.add(new Question(12, "¿Cuántas horas tiene un día?", Arrays.asList(
+                "12",
+                "18",
+                "24",
+                "30"
+        ), 3));
+        questions.add(new Question(13, "¿Cuántos cuartos de kilo hay en un kilo?", Arrays.asList(
+                "2",
+                "3",
+                "4",
+                "5"
+        ), 3));
+        questions.add(new Question(14, "¿Cómo se llama quien cuenta la historia en un cuento?", Arrays.asList(
+                "Protagonista",
+                "Personaje",
+                "Narrador",
+                "Autor"
+        ), 3));
+        questions.add(new Question(15, "¿Cómo se llama el triángulo que tiene 3 lados iguales?", Arrays.asList(
+                "Escaleno",
+                "Isósceles",
+                "Equilátero",
+                "Obtuso"
+        ), 3));
         return questions;
     }
 }

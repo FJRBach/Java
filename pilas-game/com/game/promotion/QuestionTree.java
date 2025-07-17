@@ -5,7 +5,6 @@ import java.util.List;
 public class QuestionTree {
     private QuestionNode root;
 
-    // Crea una lista enlazada lineal de preguntas
     public QuestionTree(List<Question> questions) {
         if (questions == null || questions.isEmpty()) {
             this.root = null;

@@ -4,19 +4,37 @@ import java.util.*;
 
 public class QuestionLoaderNivel3 {
     public static List<Question> load() {
-        List<Question> questions = new ArrayList<>();
-        questions.add(new Question(7, "¿Cómo se llaman los animales que nacen del vientre de la madre?",
-                Arrays.asList("Vivíparos", "Ovíparos", "Herbívoros", "Anfibios"),
-                1));
-        questions.add(new Question(8, "¿Cómo se llama un polígono de 3 lados?",
-                Arrays.asList("Pentágono", "Cuadrado", "Triángulo", "Hexágono"),
-                3));
-        questions.add(new Question(9, "¿Cómo elaboran las plantas su propio alimento?",
-                Arrays.asList("A través del viento", "A través del sol directamente", "A través de la fotosíntesis", "Absorben tierra"),
-                3));
-        questions.add(new Question(10, "¿Cuántos minutos tiene una hora?",
-                Arrays.asList("100 minutos", "90 minutos", "60 minutos", "45 minutos"),
-                3));
+        List<Question> questions = new ArrayList<>(QuestionLoaderNivel2.load());
+        questions.add(new Question(16, "¿Cuál es el resultado de 9 x 9?", Arrays.asList(
+                "72",
+                "90",
+                "81",
+                "99"
+        ), 3));
+        questions.add(new Question(17, "¿Qué número falta en la secuencia: 2, 4, 6, __, 10?", Arrays.asList(
+                "7",
+                "8",
+                "9",
+                "5"
+        ), 2));
+        questions.add(new Question(18, "¿Cuánto es 15 dividido entre 3?", Arrays.asList(
+                "4",
+                "6",
+                "5",
+                "3"
+        ), 3));
+        questions.add(new Question(19, "¿Qué número es mayor: ¾ o ⅔?", Arrays.asList(
+                "⅔",
+                "½",
+                "¾",
+                "⅓"
+        ), 3));
+        questions.add(new Question(20, "¿Cuánto es la mitad de 100?", Arrays.asList(
+                "25",
+                "75",
+                "10",
+                "50"
+        ), 4));
         return questions;
     }
 }
