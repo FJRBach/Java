@@ -1,6 +1,6 @@
 import java.util.Arrays;
 
-public class Solution {
+public class SolutionZeroMatrix {
 
     /**
      * O(m * n) time, O(1) extra space.
@@ -66,7 +66,7 @@ public class Solution {
     }
 
     public static void main(String[] args) {
-        Solution s = new Solution();
+        SolutionZeroMatrix s = new SolutionZeroMatrix();
 
         int[][] mat1 = {
             {0, 1, 2, 0},
