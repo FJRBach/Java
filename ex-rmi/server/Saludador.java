@@ -11,4 +11,11 @@ public class Saludador
     {
         return "Hola";
     }
+
+    @Override
+    public String diHola(String nombre)
+        throws java.rmi.RemoteException
+    {
+        return "Hola, " + nombre;
+    }
 }
